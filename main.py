@@ -5,7 +5,7 @@ from highrise import*
 from highrise import BaseBot,Item,Position
 from highrise.models import SessionMetadata
 
-moderators = ["Sigma_Boy__","iMooseMoo"]
+moderators = ["Sigma_Boy__","PoorNoob","X_HEER_X","Daizy__x"]
 
 casa = ["I Marry You 💍","Of course I do 💍❤️","I don't want to 💍💔","Of course I don't 💍💔","I Love You Of course I marry you 💍"]
 
@@ -260,7 +260,7 @@ class Bot(BaseBot):
         if        message.startswith("🤔") or      message.startswith("🧐") or      message.startswith("🥸") or             message.startswith("🫤") or message.startswith("😕"):
             await self.highrise.send_emote("emote-confused",user.id)
 
-        if        message.startswith("🤣") or      message.startswith("😂") or             message.startswith("ja") or             message.startswith("Ha") or         message.startswith("Ka") or           message.startswith("Ja") or           message.startswith("ha") or          message.startswith("ks") or             message.startswith("kk") or             message.startswith("Kk") or message.startswith("😁") or message.startswith("😀"):
+        if        message.startswith("🤣") or      message.startswith("😂") or             message.startswith("") or             message.startswith("") or         message.startswith("") or           message.startswith("") or           message.startswith("") or          message.startswith("") or             message.startswith("") or             message.startswith("") or message.startswith("😁") or message.startswith("😀"):
             await self.highrise.send_emote("emote-laughing",user.id)
 
         if        message.startswith("😗") or      message.startswith("😘") or      message.startswith("😙") or             message.startswith("💋") or             message.startswith("😚"):
@@ -1528,5 +1528,5 @@ Item(type='clothing', amount=1, id='bag-n_registrationavatars2023furrytail', acc
 
     async def on_user_leave(self, user: User) -> None:
         print(f"{user.username} leave the room ")
-        await self.highrise.chat(f"Goodbye {user.username}! ")
+        await self.highrise.chat(f"Goodbye please visit again {user.username}! ")
         await self.highrise.send_emote("hcc-jetpack")
