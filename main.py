@@ -259,7 +259,6 @@ class Bot(BaseBot):
    
         if        message.startswith("🤔") or      message.startswith("🧐") or      message.startswith("🥸") or             message.startswith("🫤") or message.startswith("😕"):
             await self.highrise.send_emote("emote-confused",user.id)
-.
 
         if        message.startswith("😗") or      message.startswith("😘") or      message.startswith("😙") or             message.startswith("💋") or             message.startswith("😚"):
             await self.highrise.send_emote("emote-kiss",user.id)
