@@ -24,14 +24,14 @@ pescar = ["🥈YOU WON THE MEDAL: SILVER FISHERMAN🥈","🥉YOU WON THE MEDAL: 
 class Bot(BaseBot):
     async def on_start(self, session_metadata: SessionMetadata) -> None:
         print("working")
-        await self.highrise.walk_to(Position(5.0 , 1.0 , 1.5 , "FrontLeft"))
+        await self.highrise.walk_to(Position(10.0 , 1.0 , 5.0, "FrontLeft"))
     async def on_user_join(self, user: User, position: Position | AnchorPosition) -> None:
         print(f"{user.username} entrou na sala")   
-        await self.highrise.chat(f"WELCOME TO THE FIND A DATE 🌹")
+        await self.highrise.chat(f"WELCOME TO THE ROOM {user.username} 🌹")
 
-        await self.highrise.send_whisper(user.id,f"Use: /help For More Informations.")
+        await self.highrise.chat(f"Use: /help For More Informations.")
 
-        await self.highrise.send_whisper(user.id,f"Buy Bot Call @iMooseMoo in private.")
+        await self.highrise.chat(f"Buy Bot Call @iMooseMoo in private.")
            
         await self.highrise.send_emote("hcc-jetpack")
       
