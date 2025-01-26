@@ -27,7 +27,7 @@ class Bot(BaseBot):
         await self.highrise.walk_to(Position(10.0 , 1.0 , 5.0, "FrontLeft"))
     async def on_user_join(self, user: User, position: Position | AnchorPosition) -> None:
         print(f"{user.username} entrou na sala")   
-        await self.highrise.chat(f"WELCOME TO THE ROOM {user.username} 🌹")
+        await self.highrise.chat(f"WELCOME TO THE OUR GRAB ROOM CHECK ALL GRABS GUYS AND SPIN BEST OF LUCK WIN GHOST FLOAT SPIN NOW ✨🌻🥀 {user.username} 🌹")
 
         await self.highrise.chat(f"Use: /help For More Informations.")
 
@@ -1525,5 +1525,5 @@ Item(type='clothing', amount=1, id='bag-n_registrationavatars2023furrytail', acc
 
     async def on_user_leave(self, user: User) -> None:
         print(f"{user.username} leave the room ")
-        await self.highrise.chat(f"Goodbye please visit again {user.username}! ")
-        await self.highrise.send_emote("hcc-jetpack")
+        await self.highrise.chat(f"🥀THANK YOU SO MUCH TO VISIT OUR ROOM HAVE A GOOD DAY VISIT AGAIN ✨🌻 {user.username}! ")
+        await self.highrise.send_emote("hcc-smooch")
