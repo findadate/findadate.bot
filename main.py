@@ -31,7 +31,7 @@ class Bot(BaseBot):
 
         await self.highrise.chat(f"Use: /help For More Informations.")
 
-        await self.highrise.chat(f"Buying to Pm message @,sunlight._.1 Thanks.")
+        await self.highrise.chat(f"Buying to Pm available @sunlight._.1 Thanks.")
            
         await self.highrise.send_emote("hcc-jetpack")
       
