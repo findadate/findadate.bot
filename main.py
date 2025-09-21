@@ -27,11 +27,11 @@ class Bot(BaseBot):
         await self.highrise.walk_to(Position(10.0 , 1.0 , 5.0, "FrontLeft"))
     async def on_user_join(self, user: User, position: Position | AnchorPosition) -> None:
         print(f"{user.username} entrou na sala")   
-        await self.highrise.chat(f"WELCOME TO THE OUR GRAB ROOM CHECK ALL GRABS GUYS AND SPIN BEST OF LUCK WIN GHOST FLOAT SPIN NOW ✨🌻🥀 {user.username} 🌹")
+        await self.highrise.chat(f"WELCOME TO THE OUR GRAB ROOM CHECK ALL GRABS GUYS AND SPIN BEST OF LUCK SPIN NOW ✨🌻🥀 {user.username} 🌹")
 
         await self.highrise.chat(f"Use: /help For More Informations.")
 
-        await self.highrise.chat(f"Buy Bot Call @iMooseMoo in private.")
+        await self.highrise.chat(f"Buying to Pm message @,sunlight._.1 Thanks.")
            
         await self.highrise.send_emote("hcc-jetpack")
       
@@ -996,6 +996,12 @@ class Bot(BaseBot):
             roomUsers = (await self.highrise.get_room_users()).content
             for roomUser, _ in roomUsers:
                 await self.highrise.send_emote("emote-stargazer", roomUser.id)
+
+if              message.startswith("ghostfloat All") or                              message.startswith("/emote all ghostfloat") or       message.startswith("!emote all ghostfloat"):
+          if user.username in moderators:
+            roomUsers = (await self.highrise.get_room_users()).content
+            for roomUser, _ in roomUsers:
+                await self.highrise.send_emote("emote-ghostfloat", roomUser.id)
                 
         if              message.startswith("Pose9 All") or                              message.startswith("/emote all pose9") or       message.startswith("!emote all pose9"):
           if user.username in moderators:
@@ -1506,7 +1512,7 @@ Item(type='clothing', amount=1, id='bag-n_registrationavatars2023furrytail', acc
         if        message.startswith("/") or              message.startswith("-") or              message.startswith(".") or          message.startswith("!"):
             await self.command_handler(user, message)
 
-        if                            message.startswith("Summon") or         message.startswith("Summom") or         message.startswith("!summom") or        message.startswith("/summom") or        message.startswith("/summon") or  message.startswith("!summon"):
+        if                            message.startswith("Summon") or         message.startswith("Summom") or         message.startswith("!summom") or        message.startswith("/summom") or        message.startswith("/summon") or  message.startswith("-summon"):
           if user.username in moderators:
            target_username = message.split("@")[-1].strip()
            await self.teleport_user_next_to(target_username, user)
