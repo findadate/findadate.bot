@@ -996,12 +996,6 @@ class Bot(BaseBot):
             roomUsers = (await self.highrise.get_room_users()).content
             for roomUser, _ in roomUsers:
                 await self.highrise.send_emote("emote-stargazer", roomUser.id)
-
-if              message.startswith("ghostfloat All") or                              message.startswith("/emote all ghostfloat") or       message.startswith("!emote all ghostfloat"):
-          if user.username in moderators:
-            roomUsers = (await self.highrise.get_room_users()).content
-            for roomUser, _ in roomUsers:
-                await self.highrise.send_emote("emote-ghostfloat", roomUser.id)
                 
         if              message.startswith("Pose9 All") or                              message.startswith("/emote all pose9") or       message.startswith("!emote all pose9"):
           if user.username in moderators:
