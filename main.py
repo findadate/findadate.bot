@@ -214,10 +214,10 @@ class Bot(BaseBot):
           await self.highrise.send_whisper(user.id,"Zombie All , Celebrate All , Kiss All , Bow All , Snowangel All , Confused All , Charging All , Wei All , Cursing All , Greedy All , Russian All , Shop All , Model All , Ren All , Tiktok4 All , Snake All , Uwu All")
 
         if        message.startswith("-floor1") or message.startswith("!floor1") or message.startswith("-floor 1") or message.startswith("Floor 1") or message.startswith("Floor1") or message.startswith("/floor1") or    message.startswith("floor1") or message.startswith("-1") or                                 message.startswith("floor 1") or message.startswith("!floor 1"):
-          await self.highrise.teleport(user.id, Position(3.5 , 0.0 , 7.0 ))
+          await self.highrise.teleport(user.id, Position(1.5 , 0.0 , 4.0 ))
 
         if        message.startswith("-floor3") or message.startswith("!floor3") or message.startswith("-floor 3") or message.startswith("Floor 3") or message.startswith("Floor3") or message.startswith("/floor3") or    message.startswith("floor3") or message.startswith("-3") or                                 message.startswith("floor 3") or message.startswith("!floor 3"):
-          await self.highrise.teleport(user.id, Position(15.0 , 15.2 , 4.1))
+          await self.highrise.teleport(user.id, Position(15.0 , 15.0 , 4.0))
      
         if        message.startswith("-floor2") or message.startswith("!floor2") or message.startswith("-floor 2") or message.startswith("Floor 2") or message.startswith("Floor2") or message.startswith("/floor2") or    message.startswith("floor2") or message.startswith("-2") or                                 message.startswith("floor 2") or message.startswith("!floor 2"):
           await self.highrise.teleport(user.id, Position(10.5 , 6.0 , 2.3))
