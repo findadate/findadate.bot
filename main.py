@@ -24,7 +24,7 @@ pescar = ["🥈YOU WON THE MEDAL: SILVER FISHERMAN🥈","🥉YOU WON THE MEDAL: 
 class Bot(BaseBot):
     async def on_start(self, session_metadata: SessionMetadata) -> None:
         print("working")
-        await self.highrise.walk_to(Position(15.0 , 0.0 , 5.0, "FrontLeft"))
+        await self.highrise.walk_to(Position(15.0 , 0.0 , 6.0, "FrontLeft"))
     async def on_user_join(self, user: User, position: Position | AnchorPosition) -> None:
         print(f"{user.username} entrou na sala")   
         await self.highrise.chat(f"WELCOME TO THE OUR GRAB ROOM CHECK ALL GRABS GUYS AND SPIN BEST OF LUCK SPIN NOW ✨🌻🥀 {user.username} 🌹")
@@ -220,7 +220,7 @@ class Bot(BaseBot):
           await self.highrise.teleport(user.id, Position(14.0 , 14.0 , 4.0))
      
         if        message.startswith("-floor2") or message.startswith("!floor2") or message.startswith("-floor 2") or message.startswith("Floor 2") or message.startswith("Floor2") or message.startswith("/floor2") or    message.startswith("floor2") or message.startswith("-2") or                                 message.startswith("floor 2") or message.startswith("!floor 2"):
-          await self.highrise.teleport(user.id, Position(8.3 , 5.0 , 2.2))
+          await self.highrise.teleport(user.id, Position(9.3 , 4.0 , 3.2))
             
         if message.startswith("!emoteall"):
           await self.highrise.send_whisper(user.id,"Skating All , Time All , Gottago All  , Scritchy All , Bitnervous All , Jingle All , Curtsy All , Hot All , Hyped All ,Sleigh All , Surprise All, Repose All , Kawaii All , Touch All , Gift All , Pushit All , Tiktok All , Smooch All , Launch All")
