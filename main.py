@@ -609,7 +609,7 @@ class Bot(BaseBot):
             await self.highrise.send_emote("dance-tiktok11",user.id)
 
         if        message.startswith("/smooch") or      message.startswith("!smooch") or        message.startswith("smooch") or    message.startswith("Smooch") or message.startswith("94"):
-            await self.highrise.send_emote("emote-kissing-bound",user.id)
+            await self.highrise.send_emote("emote-Smooch",user.id)
 
         if        message.startswith("/launch") or      message.startswith("!launch") or        message.startswith("launch") or   message.startswith("Launch") or message.startswith("95"):
             await self.highrise.send_emote("emote-launch",user.id)
