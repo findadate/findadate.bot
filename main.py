@@ -217,10 +217,10 @@ class Bot(BaseBot):
           await self.highrise.teleport(user.id, Position(20.0 , 0.0 , 6.0 ))
 
         if        message.startswith("-floor3") or message.startswith("!floor3") or message.startswith("-floor 3") or message.startswith("Floor 3") or message.startswith("Floor3") or message.startswith("/floor3") or    message.startswith("floor3") or message.startswith("-3") or                                 message.startswith("floor 3") or message.startswith("!floor 3"):
-          await self.highrise.teleport(user.id, Position(15.0 , 15.0 , 4.0))
+          await self.highrise.teleport(user.id, Position(20.0 , 16.0 , 5.0))
      
         if        message.startswith("-floor2") or message.startswith("!floor2") or message.startswith("-floor 2") or message.startswith("Floor 2") or message.startswith("Floor2") or message.startswith("/floor2") or    message.startswith("floor2") or message.startswith("-2") or                                 message.startswith("floor 2") or message.startswith("!floor 2"):
-          await self.highrise.teleport(user.id, Position(12.0 , 12.0 , 3.0))
+          await self.highrise.teleport(user.id, Position(8.0 , 12.0 , 2.0))
             
         if message.startswith("!emoteall"):
           await self.highrise.send_whisper(user.id,"Skating All , Time All , Gottago All  , Scritchy All , Bitnervous All , Jingle All , Curtsy All , Hot All , Hyped All ,Sleigh All , Surprise All, Repose All , Kawaii All , Touch All , Gift All , Pushit All , Tiktok All , Smooch All , Launch All")
