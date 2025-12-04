@@ -5,7 +5,7 @@ from highrise import*
 from highrise import BaseBot,Item,Position
 from highrise.models import SessionMetadata
 
-moderators = ["SUNLIGHT._.1","","_F_A_R_S_U_N._"]
+moderators = ["SUNLIGHT._.1","","Sigma_boy__"]
 
 casa = ["I Marry You 💍","Of course I do 💍❤️","I don't want to 💍💔","Of course I don't 💍💔","I Love You Of course I marry you 💍"]
 
@@ -24,14 +24,14 @@ pescar = ["🥈YOU WON THE MEDAL: SILVER FISHERMAN🥈","🥉YOU WON THE MEDAL: 
 class Bot(BaseBot):
     async def on_start(self, session_metadata: SessionMetadata) -> None:
         print("working")
-        await self.highrise.walk_to(Position(20.0 , 0.0 , 7.0, "FrontLeft"))
+        await self.highrise.walk_to(Position(30.0 , 0.0 , 0.0, "FrontLeft"))
     async def on_user_join(self, user: User, position: Position | AnchorPosition) -> None:
         print(f"{user.username} entrou na sala")   
         await self.highrise.chat(f"WELCOME TO THE OUR GRAB ROOM CHECK ALL GRABS GUYS AND SPIN BEST OF LUCK SPIN NOW ✨🌻🥀 {user.username} 🌹")
 
         await self.highrise.chat(f"Use: /help For More Informations.")
 
-        await self.highrise.chat(f"Buying to Pm available @sunlight._.1 Thanks.")
+        await self.highrise.chat(f"Buying to Pm available @Sigma_boy__ Thanks.")
            
         await self.highrise.send_emote("hcc-jetpack")
       
