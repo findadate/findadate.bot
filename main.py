@@ -24,7 +24,7 @@ pescar = ["🥈YOU WON THE MEDAL: SILVER FISHERMAN🥈","🥉YOU WON THE MEDAL: 
 class Bot(BaseBot):
     async def on_start(self, session_metadata: SessionMetadata) -> None:
         print("working")
-        await self.highrise.walk_to(Position(20.7 , 0.0 , 7.0, "FrontLeft"))
+        await self.highrise.walk_to(Position(20.0 , 0.0 , 7.0, "FrontLeft"))
     async def on_user_join(self, user: User, position: Position | AnchorPosition) -> None:
         print(f"{user.username} entrou na sala")   
         await self.highrise.chat(f"WELCOME TO THE OUR GRAB ROOM CHECK ALL GRABS GUYS AND SPIN BEST OF LUCK SPIN NOW ✨🌻🥀 {user.username} 🌹")
