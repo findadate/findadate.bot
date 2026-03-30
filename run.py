@@ -1,32 +1,37 @@
+import os
+import sys
+
+# Step 1: Manual fix for 'pkg_resources' error
+try:
+    import pkg_resources
+except ImportError:
+    os.system('pip install setuptools')
+
 from flask import Flask
 from threading import Thread
 import time
 import asyncio
 from importlib import import_module
 
-# Flexible Imports: Dono locations check karega
+# Step 2: Flexible Imports for Highrise
 try:
     from highrise import BaseBot, BotDefinition
+    from highrise.__main__ import main as highrise_main
 except ImportError:
-    try:
-        from highrise.models import BaseBot, BotDefinition
-    except ImportError:
-        print("SDK Error: Make sure highrise-bot-sdk is installed correctly.")
-
-from highrise.__main__ import main as highrise_main
+    # Agar purana path kaam kare toh
+    from highrise.models import BaseBot, BotDefinition
+    import highrise.__main__ as h_main
+    highrise_main = h_main.main
 
 class WebServer():
     def __init__(self):
         self.app = Flask(__name__)
         @self.app.route('/')
         def index(): return "Bot is Online!"
-
     def run(self):
         self.app.run(host='0.0.0.0', port=8080)
-
     def keep_alive(self):
-        t = Thread(target=self.run, daemon=True)
-        t.start()
+        Thread(target=self.run, daemon=True).start()
 
 class RunBot():
     room_id = "676c30efa4158157052f44f6"
@@ -34,7 +39,7 @@ class RunBot():
     
     def __init__(self):
         try:
-            # Direct import of your bot class from main.py
+            # Ye 'main.py' ko load karega
             module = import_module("main")
             bot_instance = getattr(module, "Bot")()
             self.definitions = [BotDefinition(bot_instance, self.room_id, self.bot_token)]
@@ -48,7 +53,7 @@ class RunBot():
             try:
                 asyncio.run(highrise_main(self.definitions))
             except Exception as e:
-                print(f"Bot Restarting: {e}")
+                print(f"Bot Crashed: {e}. Restarting...")
                 time.sleep(5)
 
 if __name__ == "__main__":
