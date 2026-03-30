@@ -1,3 +1,2 @@
 highrise-bot-sdk==23.2.0
 Flask
-setuptools
