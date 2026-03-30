@@ -46,8 +46,8 @@ class WebServer():
 # --- Main Bot Runner ---
 class RunBot():
     # Aapka Room ID aur Token
-    room_id = "676c30efa4158157052f44f6"
-    bot_token = "36e52099bb646d35c6e2f568c4728f52adcd7b4bf5664a41ee94c9905584c276"
+    room_id = "68e27f6e9796e3239f1cd493"
+    bot_token = "f42d8a4ca6781a219ba6a75ea0cde26dc5229cfda5177554be6797b2a34b493b"
     
     def __init__(self):
         try:
