@@ -1,2 +1,3 @@
-highrise-python-sdk==23.1.0b11
+highrise-bot-sdk
 setuptools
+Flask
