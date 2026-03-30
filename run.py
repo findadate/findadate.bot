@@ -1,11 +1,13 @@
 import os
 import sys
+import subprocess
 
-# Step 1: Manual fix for 'pkg_resources' error
+# --- FIX: pkg_resources aur setuptools ka jhamela khatam ---
 try:
     import pkg_resources
 except ImportError:
-    os.system('pip install setuptools')
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "setuptools"])
+    import pkg_resources
 
 from flask import Flask
 from threading import Thread
@@ -13,49 +15,69 @@ import time
 import asyncio
 from importlib import import_module
 
-# Step 2: Flexible Imports for Highrise
+# --- FIX: Highrise SDK Imports (Flexible Path) ---
 try:
     from highrise import BaseBot, BotDefinition
     from highrise.__main__ import main as highrise_main
 except ImportError:
-    # Agar purana path kaam kare toh
-    from highrise.models import BaseBot, BotDefinition
-    import highrise.__main__ as h_main
-    highrise_main = h_main.main
+    try:
+        from highrise.models import BaseBot, BotDefinition
+        import highrise.__main__ as h_main
+        highrise_main = h_main.main
+    except Exception as e:
+        print(f"SDK Critical Error: {e}")
 
+# --- Flask Server (Bot ko zinda rakhne ke liye) ---
 class WebServer():
     def __init__(self):
         self.app = Flask(__name__)
         @self.app.route('/')
-        def index(): return "Bot is Online!"
-    def run(self):
-        self.app.run(host='0.0.0.0', port=8080)
-    def keep_alive(self):
-        Thread(target=self.run, daemon=True).start()
+        def index(): 
+            return "Bot is Online and Running!"
 
+    def run(self):
+        # Streamlit standard port 8080 use karta hai
+        self.app.run(host='0.0.0.0', port=8080)
+
+    def keep_alive(self):
+        t = Thread(target=self.run, daemon=True)
+        t.start()
+
+# --- Main Bot Runner ---
 class RunBot():
+    # Aapka Room ID aur Token
     room_id = "676c30efa4158157052f44f6"
     bot_token = "36e52099bb646d35c6e2f568c4728f52adcd7b4bf5664a41ee94c9905584c276"
     
     def __init__(self):
         try:
-            # Ye 'main.py' ko load karega
+            # Ye aapke 'main.py' se 'Bot' class ko load karega
             module = import_module("main")
             bot_instance = getattr(module, "Bot")()
             self.definitions = [BotDefinition(bot_instance, self.room_id, self.bot_token)]
+            print("Bot definitions loaded successfully.")
         except Exception as e:
-            print(f"Loading Error: {e}")
+            print(f"Failed to load Bot from main.py: {e}")
             self.definitions = []
 
     def run_loop(self):
-        if not self.definitions: return
+        if not self.definitions:
+            print("No definitions found. Exiting...")
+            return
+        
         while True:
             try:
+                print("Starting Highrise main loop...")
                 asyncio.run(highrise_main(self.definitions))
             except Exception as e:
-                print(f"Bot Crashed: {e}. Restarting...")
+                print(f"Bot crashed with error: {e}. Restarting in 5 seconds...")
                 time.sleep(5)
 
 if __name__ == "__main__":
-    WebServer().keep_alive()
-    RunBot().run_loop()
+    # 1. Flask start karo
+    server = WebServer()
+    server.keep_alive()
+    
+    # 2. Bot start karo
+    bot_runner = RunBot()
+    bot_runner.run_loop()
