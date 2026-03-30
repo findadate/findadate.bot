@@ -2,11 +2,12 @@ from flask import Flask
 from threading import Thread
 import time
 import asyncio
-from highrise import BaseBot
-from highrise.models import BotDefinition
+import highrise
+from highrise import BaseBot, BotDefinition # Naye version ke liye direct import
 from highrise.__main__ import main as highrise_main
 from importlib import import_module
 
+# 1. WebServer Setup
 class WebServer():
     def __init__(self):
         self.app = Flask(__name__)
@@ -21,28 +22,35 @@ class WebServer():
         t = Thread(target=self.run, daemon=True)
         t.start()
 
+# 2. Bot Runner Setup
 class RunBot():
     room_id = "676c30efa4158157052f44f6"
     bot_token = "36e52099bb646d35c6e2f568c4728f52adcd7b4bf5664a41ee94c9905584c276"
-    bot_file = "main"
+    bot_file = "main" 
     bot_class = "Bot"
 
     def __init__(self) -> None:
         try:
             module = import_module(self.bot_file)
             bot_instance = getattr(module, self.bot_class)()
-            self.definitions = [BotDefinition(bot_instance, self.room_id, self.bot_token)]
+            # Latest SDK version yahan directly BotDefinition accept karta hai
+            self.definitions = [
+                BotDefinition(bot_instance, self.room_id, self.bot_token)
+            ]
         except Exception as e:
-            print(f"Error: {e}")
+            print(f"Error loading bot: {e}")
             self.definitions = []
 
     def run_loop(self) -> None:
-        if not self.definitions: return
+        if not self.definitions:
+            print("No bot definitions found.")
+            return
+
         while True:
             try:
                 asyncio.run(highrise_main(self.definitions))
             except Exception as e:
-                print(f"Bot Crashed: {e}")
+                print(f"Bot Crashed: {e}. Restarting...")
                 time.sleep(5)
 
 if __name__ == "__main__":
