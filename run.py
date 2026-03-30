@@ -2,8 +2,7 @@ from flask import Flask
 from threading import Thread
 import time
 import asyncio
-from highrise import BaseBot
-from highrise.models import BotDefinition # Yahan change kiya hai
+from highrise import BaseBot, BotDefinition # Ya phir highrise.models import BotDefinition agar ye fail ho
 from highrise.__main__ import main as highrise_main
 from importlib import import_module
 
