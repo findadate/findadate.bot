@@ -3,7 +3,12 @@ from threading import Thread
 import time
 import asyncio
 import highrise
-from highrise import BaseBot, BotDefinition # Naye version ke liye direct import
+# Hum dono jagah try karenge taaki error na aaye
+try:
+    from highrise import BaseBot, BotDefinition
+except ImportError:
+    from highrise.models import BaseBot, BotDefinition
+
 from highrise.__main__ import main as highrise_main
 from importlib import import_module
 
@@ -33,7 +38,6 @@ class RunBot():
         try:
             module = import_module(self.bot_file)
             bot_instance = getattr(module, self.bot_class)()
-            # Latest SDK version yahan directly BotDefinition accept karta hai
             self.definitions = [
                 BotDefinition(bot_instance, self.room_id, self.bot_token)
             ]
@@ -48,9 +52,10 @@ class RunBot():
 
         while True:
             try:
+                # Direct asyncio loop
                 asyncio.run(highrise_main(self.definitions))
             except Exception as e:
-                print(f"Bot Crashed: {e}. Restarting...")
+                print(f"Bot Crashed: {e}. Restarting in 5s...")
                 time.sleep(5)
 
 if __name__ == "__main__":
